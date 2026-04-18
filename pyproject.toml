@@ -1,0 +1,80 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "clearhealth"
+version = "0.1.0"
+description = "Analyse health and education documents for accessibility -- readability scoring, medical jargon detection, and plain-English suggestions."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.9"
+authors = [
+    { name = "Adewale Tokosi", email = "danielajerry301@gmail.com" },
+]
+keywords = [
+    "nlp",
+    "health-literacy",
+    "readability",
+    "medical-jargon",
+    "text-analysis",
+    "accessibility",
+    "healthcare",
+    "plain-language",
+    "spacy",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Healthcare Industry",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Text Processing :: Linguistic",
+    "Typing :: Typed",
+]
+dependencies = [
+    "spacy>=3.4.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "ruff>=0.1.0",
+    "mypy>=1.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/wale-eth/clearhealth"
+Documentation = "https://github.com/wale-eth/clearhealth#readme"
+Repository = "https://github.com/wale-eth/clearhealth"
+Issues = "https://github.com/wale-eth/clearhealth/issues"
+
+[project.scripts]
+clearhealth = "clearhealth.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/clearhealth"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v --tb=short"
+
+[tool.ruff]
+target-version = "py39"
+line-length = 99
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W", "UP"]
+
+[tool.mypy]
+python_version = "3.9"
+warn_return_any = true
+warn_unused_configs = true
